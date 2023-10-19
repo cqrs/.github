@@ -6,7 +6,7 @@ CQRS stands for Command Query Responsibility Segregation. It is a software archi
 
     This represents an intention to change state. Commands should be task-oriented, often capturing a user intention like "CreateOrder" or "CancelSubscription". Commands are typically handled by a single aggregate in the domain-driven design context.
 
-3. Query
+2. Query
 
     This represents a request to retrieve state. Queries should be read-only and won't have side effects.
 
@@ -34,9 +34,9 @@ Often, CQRS is used in conjunction with Event Sourcing (ES). Event Sourcing ensu
 
 ```mermaid
 graph LR
-    Client[Client] --> UI[UI]
+    Client --> UI
     UI --> Command & Query
-    
+
     Query --> ReadDatabase[(Read Database)]
     Command --> WriteDatabase[(Write Database)]
 
