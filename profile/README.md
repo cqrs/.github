@@ -19,3 +19,15 @@ The main motivations behind CQRS are:
 It's worth noting that while CQRS brings many advantages, it also introduces complexity, especially in systems where strong consistency between the read and write sides is required. As with any pattern, it's crucial to understand the trade-offs and ensure it's a good fit for the specific use case.
 
 Often, CQRS is used in conjunction with Event Sourcing (ES). Event Sourcing ensures that every change to the state of an application is captured as an event. These events can then be replayed to reconstruct the system's state, and they can be used to build up the read-optimized views required by the CQRS pattern. However, while they complement each other nicely, CQRS and ES can be used independently.
+
+```mermaid
+graph LR
+    Client[Client] --> UI[UI]
+    UI --> Command & Query
+    
+    Query --> ReadDatabase[(Read Database)]
+    Command --> WriteDatabase[(Write Database)]
+
+    classDef database fill:lightblue,stroke:blue,stroke-width:2px,color:blue;
+    class WriteDatabase,ReadDatabase database;
+```
